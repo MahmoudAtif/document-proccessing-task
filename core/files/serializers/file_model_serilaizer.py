@@ -8,7 +8,7 @@ class FileModelSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "file",
-            "extention",
+            "extension",
             "width",
             "height",
             "number_of_channels",
@@ -18,7 +18,7 @@ class FileModelSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         representation = super().to_representation(instance)
 
-        if representation["extention"] == "pdf":
+        if representation["extension"] == "pdf":
             representation.pop("number_of_channels")
         else:
             representation.pop("number_of_pages")

@@ -11,7 +11,7 @@ from core.files.serializers import FileModelSerializer
 
 
 class PdfApi(viewsets.ModelViewSet):
-    queryset = FileModel.objects.filter(extention="pdf")
+    queryset = FileModel.objects.filter(extension="pdf")
     serializer_class = FileModelSerializer
     http_method_names = ["get", "delete", "post"]
 

@@ -8,7 +8,7 @@ from core.files.serializers import FileModelSerializer, RotateInputSerializer
 
 
 class ImageApi(viewsets.ModelViewSet):
-    queryset = FileModel.objects.exclude(extention="pdf")
+    queryset = FileModel.objects.exclude(extension="pdf")
     serializer_class = FileModelSerializer
     http_method_names = ["get", "delete", "post"]
 
@@ -24,7 +24,7 @@ class ImageApi(viewsets.ModelViewSet):
         img_path = instance.file.path
 
         with Image.open(img_path) as img:
-            rotated_img = img.rotate(serializer.validated_data["angel"])
+            rotated_img = img.rotate(serializer.validated_data["angle"])
             rotated_img.save(img_path)
 
         return Response({"message": "Image rotated successfully"})

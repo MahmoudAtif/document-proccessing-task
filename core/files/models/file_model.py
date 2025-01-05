@@ -13,7 +13,7 @@ class FileModel(models.Model):
             )
         ],
     )
-    extention = models.CharField(_("Extention"), max_length=10)
+    extension = models.CharField(_("Extension"), max_length=10)
     width = models.FloatField(_("Width"), null=True, blank=True)
     height = models.FloatField(_("Height"), null=True, blank=True)
     number_of_channels = models.FloatField(

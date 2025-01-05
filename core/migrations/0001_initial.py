@@ -36,8 +36,8 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "extention",
-                    models.CharField(max_length=10, verbose_name="Extention"),
+                    "extension",
+                    models.CharField(max_length=10, verbose_name="Extension"),
                 ),
                 (
                     "width",

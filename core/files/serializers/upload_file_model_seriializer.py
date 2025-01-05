@@ -15,7 +15,7 @@ class UploadFileModelSerializer(serializers.ModelSerializer):
     def save(self, **kwargs):
         file = self.validated_data["file"]
         file_extension = file.name.split(".")[-1]
-        self.validated_data["extention"] = file_extension
+        self.validated_data["extension"] = file_extension
         number_of_channels = None
         number_of_pages = None
 
