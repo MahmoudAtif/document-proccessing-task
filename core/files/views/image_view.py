@@ -27,4 +27,11 @@ class ImageApi(viewsets.ModelViewSet):
             rotated_img = img.rotate(serializer.validated_data["angle"])
             rotated_img.save(img_path)
 
-        return Response({"message": "Image rotated successfully"})
+        serializer = self.get_serializer(instance)
+
+        return Response(
+            {
+                "message": "Image rotated successfully",
+                "data": serializer.data,
+            }
+        )
