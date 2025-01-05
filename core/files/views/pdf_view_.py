@@ -49,4 +49,9 @@ class PdfApi(viewsets.ModelViewSet):
             )
         FileModel.objects.bulk_create(files_to_be_create)
         instance.delete()
-        return Response({"message": "success"})
+        
+        files_ids = [file.id for file in files_to_be_create]
+        queryset = FileModel.objects.filter(id__in=files_ids)
+        serializer = self.get_serializer(queryset, many=True)
+        
+        return Response(serializer.data)
