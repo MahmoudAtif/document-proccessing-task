@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.exceptions import MethodNotAllowed
+from drf_spectacular.utils import extend_schema
 from core.files.models import FileModel
 from core.files.serializers import FileModelSerializer, RotateInputSerializer
 
@@ -12,9 +13,11 @@ class ImageApi(viewsets.ModelViewSet):
     serializer_class = FileModelSerializer
     http_method_names = ["get", "delete", "post"]
 
+    @extend_schema(exclude=True)
     def create(self, request, *args, **kwargs):
         raise MethodNotAllowed(request)
 
+    @extend_schema(request=RotateInputSerializer)
     @action(methods=["POST"], detail=True)
     def rotate(self, *args, **kwargs):
         serializer = RotateInputSerializer(data=self.request.data)

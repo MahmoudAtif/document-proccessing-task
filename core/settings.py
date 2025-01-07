@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
-    'core',
+    "drf_spectacular",
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,16 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Document Processing Api',
+    'DESCRIPTION': 'Document Processing Api Documentation',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

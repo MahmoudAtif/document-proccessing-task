@@ -6,6 +6,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.exceptions import MethodNotAllowed
 from rest_framework.decorators import action
+from drf_spectacular.utils import extend_schema
 from core.files.models import FileModel
 from core.files.serializers import FileModelSerializer
 
@@ -15,6 +16,7 @@ class PdfApi(viewsets.ModelViewSet):
     serializer_class = FileModelSerializer
     http_method_names = ["get", "delete", "post"]
 
+    @extend_schema(exclude=True)
     def create(self, request, *args, **kwargs):
         raise MethodNotAllowed(request)
 
